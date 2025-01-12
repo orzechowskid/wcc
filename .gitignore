@@ -1,0 +1,6 @@
+data.db*
+**/node_modules/
+
+frontend/build/
+
+proxy-server/fake-ca/domains/local.host/

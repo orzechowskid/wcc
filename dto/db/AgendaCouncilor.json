@@ -1,0 +1,20 @@
+{
+		"$schema": "https://json-schema.org/draft/2020-12/schema",
+		"$id": "https://danorz.com/AgendaCouncilor.json",
+		"title": "AgendaCouncilor",
+		"description": "association of agenda to councilor(s)",
+		"type": "object",
+		"properties": {
+				"agendaId": {
+						"type": "string"
+				},
+				"councilorId": {
+						"type": "string"
+				}
+		},
+		"required": [
+				"agendaId",
+				"councilorId"
+		],
+		"tableHints": "PRIMARY KEY(agendaId, councilorId), FOREIGN KEY (agendaId) REFERENCES CityCouncilAgenda (id), FOREIGN KEY (councilorId) REFERENCES Councilor (id)"
+}

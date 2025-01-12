@@ -1,0 +1,31 @@
+{
+		"$schema": "https://json-schema.org/draft/2020-12/schema",
+		"$id": "https://danorz.com/CityCouncilAgenda.json",
+		"title": "CityCouncilAgenda",
+		"description": "City Council agenda",
+		"type": "object",
+		"properties": {
+				"id": {
+						"columnHints": "NOT NULL PRIMARY KEY",
+						"description": "db primary key",
+						"type": "string"
+				},
+				"createdAt": {
+						"description": "ms since epoch",
+						"type": "integer"
+				},
+				"postedAt": {
+						"description": "meeting date.  ms since epoch, corresponding to 12:00:01AM (ish) of the day of the meeting",
+						"type": "integer"
+				},
+				"text": {
+						"type": "string"
+				}
+		},
+		"required": [
+				"id",
+				"createdAt",
+				"postedAt",
+				"text"
+		]
+}

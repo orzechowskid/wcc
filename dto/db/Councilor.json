@@ -1,0 +1,27 @@
+{
+		"$schema": "https://json-schema.org/draft/2020-12/schema",
+		"$id": "https://danorz.com/Councilor.json",
+		"title": "Councilor",
+		"description": "City Council member",
+		"type": "object",
+		"properties": {
+				"id": {
+						"columnHints": "PRIMARY KEY",
+						"description": "db primary key",
+						"type": "string"
+				},
+				"name": {
+						"description": "councilor full name",
+						"type": "string"
+				},
+				"status": {
+						"description": "activity status",
+						"enum": [ "ACTIVE", "INACTIVE" ],
+						"type": "string"
+				}
+		},
+		"required": [
+				"id",
+				"name"
+		]
+}

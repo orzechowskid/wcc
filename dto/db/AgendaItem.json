@@ -1,0 +1,52 @@
+{
+		"$schema": "https://json-schema.org/draft/2020-12/schema",
+		"$id": "https://danorz.com/AgendaItem.json",
+		"title": "AgendaItem",
+		"description": "City Council agenda item",
+		"type": "object",
+		"properties": {
+				"id": {
+						"columnHints": "PRIMARY KEY",
+						"description": "db primary key",
+						"type": "string"
+				},
+				"agendaSectionHeaders": {
+						"description": "a '::'-delimited string of agenda section headers (e.g. 'PETITIONS', 'COMMUNICATIONS OF THE CITY MANAGER'), ordered from most general to most specific",
+						"type": "string"
+				},
+				"attachmentUrl": {
+						"description": "URL of agenda item in city document-tracking system",
+						"type": "string"
+				},
+				"createdAt": {
+						"description": "ms since epoch",
+						"type": "integer"
+				},
+				"documentId": {
+						"description": "uuid of agenda item in city document-tracking system",
+						"type": "string"
+				},
+				"itemSection": {
+						"description": "the agenda section (e.g. '8k.', '12.A.1') of the agenda item",
+						"type": "string"
+				},
+				"resolutionText": {
+						"description": "action taken by the council regarding this agenda item",
+						"type": "string"
+				},
+				"text": {
+						"description": "text of agenda item",
+						"type": "string"
+				}
+		},
+		"required": [
+				"id",
+				"agendaSectionHeaders",
+				"attachmentUrl",
+				"createdAt",
+				"documentId",
+				"itemSection",
+				"resolutionText",
+				"text"
+		]
+}
