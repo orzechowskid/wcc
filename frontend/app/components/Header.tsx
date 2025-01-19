@@ -18,9 +18,6 @@ export default function Header() {
 					<li>
 						<Link to="/">Home</Link>
 					</li>
-					<li>
-						<Link to="/agenda/new">New</Link>
-					</li>
 				</ul>
 			</nav>
 		</StyledHeader>

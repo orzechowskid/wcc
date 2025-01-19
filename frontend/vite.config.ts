@@ -1,10 +1,18 @@
 import { vitePlugin as remix } from "@remix-run/dev"
 import { glob } from "glob"
 import { defineConfig } from "vite"
+import babel from "vite-plugin-babel"
 import tsconfigPaths from "vite-tsconfig-paths"
 
 export default defineConfig({
   plugins: [
+		babel({
+			babelConfig: {
+				plugins: [[
+					"babel-plugin-styled-components"
+				]]
+			}
+		}),
     remix({
       future: {
         v3_fetcherPersist: true,

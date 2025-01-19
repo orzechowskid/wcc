@@ -10,16 +10,20 @@ import {
 } from "react-aria-components"
 import { Link, Path } from "@remix-run/react"
 import {
+    HTMLAttributes,
 	type PropsWithChildren,
 	useMemo
 } from "react"
 import { styled } from "styled-components"
 
-const PaginatorContainer = styled.div`
+import MySelect from "~/components/library/Select.tsx"
+
+const PaginatorContainer = styled.nav`
 display: flex;
+justify-content: center;
 align-items: flex-end;
-gap: 8px;
-`;
+gap: 16px;
+`
 
 type PaginatorPropsBase = {
 	currentPage: number;
@@ -36,7 +40,9 @@ type PaginatorPropsForControlled = {
 	onChangePage: (nextPage: number, newPageIndices: [number, number]) => void
 } & PaginatorPropsBase
 
-type PaginatorProps = PaginatorPropsForNav | PaginatorPropsForControlled
+type PaginatorProps = HTMLAttributes<HTMLElement> & (
+	PaginatorPropsForNav | PaginatorPropsForControlled
+)
 
 // 			<Button
 // 				elementType="a"
@@ -48,10 +54,12 @@ function usePaginator(props: PaginatorProps) {
 	const {
 		currentPage,
 		pageSize,
-		totalItems
+		totalItems,
+		"aria-label": _ariaLabel,
+		...containerProps
 	} = props
+	const ariaLabel = _ariaLabel ?? "pagination"
 	const getLinkForPage = "getLinkForPage" in props ? props.getLinkForPage : undefined
-	const ariaControls = "aria-controls" in props ? props["aria-controls"] : undefined
 	const onChangePage = "onChangePage" in props ? props.onChangePage : undefined
 	const pageRange: [number, number] = [
 		0,
@@ -68,9 +76,6 @@ function usePaginator(props: PaginatorProps) {
 		new Array(lastPage).fill(null).map((_, idx) => ({
 			id: idx,
 			name: idx,
-			href: (!!getLinkForPage && (idx !== currentPage))
-				? getLinkForPage(idx)
-				: undefined,
 			textValue: String(idx + 1)
 		})),
 		[currentPage, getLinkForPage, lastPage]
@@ -146,7 +151,8 @@ function usePaginator(props: PaginatorProps) {
 	}, [currentPage, getLinkForPage, lastPage, onSelectionChange])
 
 	return {
-		boxProps: { "aria-controls": ariaControls },
+		ariaLabel,
+		containerProps,
 		currentPage,
 		firstPageControl,
 		items,
@@ -198,7 +204,8 @@ function NavButton(props: NavButtonProps) {
 
 export default function Paginator(props: PaginatorProps) {
 	const {
-		boxProps,
+		ariaLabel,
+		containerProps,
 		currentPage,
 		firstPageControl,
 		items,
@@ -208,26 +215,19 @@ export default function Paginator(props: PaginatorProps) {
 		prevPageControl
 	} = usePaginator(props)
 
-
 	return (
-		<PaginatorContainer>
+		<PaginatorContainer
+			{...containerProps}
+			aria-label={ariaLabel}
+		>
 			{firstPageControl}
 			{prevPageControl}
-			<Select
-				selectedKey={currentPage}
+			<MySelect
+				items={items}
+				label="Page"
 				onSelectionChange={onSelectionChange}
-				{...boxProps}
-			>
-				<Label>page</Label>
-				<Button>
-					<SelectValue />
-				</Button>
-				<Popover>
-					<ListBox items={items}>
-						{(item) => <ListBoxItem>{item.textValue}</ListBoxItem>}
-					</ListBox>
-				</Popover>
-			</Select>
+				selectedKey={currentPage}
+			/>
 			{nextPageControl}
 			{lastPageControl}
 		</PaginatorContainer>

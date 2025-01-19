@@ -22,6 +22,7 @@ import {
   useCallback,
 	useEffect,
 	useId,
+  useRef,
   useState
 } from "react"
 import {
@@ -342,7 +343,14 @@ const StyledMain = styled.main`
   grid-template-columns: 300px 1fr;
   gap: 8px;
 
-font-family: "Open Sans";
+dt {
+font-size: 110%;
+font-weight: 400;
+}
+dd:last-child div {
+display: flex;
+gap: 8px;
+}
 
   & > [slot="header"] {
 grid-area: header;
@@ -407,7 +415,14 @@ background-color: #eeeeee;
 }
 }
 
-  }
+}
+
+nav {
+margin: 8px;
+}
+nav [aria-expanded] {
+width: 80px;
+}
 `
 
 type AgendaTableColumn = {
@@ -430,7 +445,8 @@ export default function AgendaPage() {
 		mayor
 	} = data
 	const [currentPage, setCurrentPage] = useState<number>()
-	const [records, setRecords] = useState<object[]|null>(null)
+	const [records, setRecords] = useState<(typeof items)|null>(null)
+	const tableRef = useRef<HTMLTableElement|null>(null)
 	const location = useLocation()
 	const [, setSearchParams] = useSearchParams()
 	const id = useId()
@@ -482,6 +498,10 @@ export default function AgendaPage() {
 		console.log({page,currentPage})
 		setCurrentPage(page)
 		setRecords(items.slice(cursor, cursor + PAGE_SIZE) ?? [])
+		tableRef.current?.scrollTo({
+			behavior: "smooth",
+			top: 0
+		})
 	}, [currentPage, hash, items])
 
 	return (
@@ -489,16 +509,13 @@ export default function AgendaPage() {
 			<div slot="header">
 				<h1>
 					City Council Agenda
-				</h1>
-				<dl>
-					<dt>Agenda Date</dt>
-					<dd>
 						{agenda ? (
-							new Date(agenda.postedAt).toISOString().split("T")[0]
+							`: ${new Date(agenda.postedAt).toISOString().split("T")[0]}`
 						) : (
 							null
 						)}
-					</dd>
+				</h1>
+				<dl>
 					<dt>Mayor</dt>
 					<dd>
 						<span>
@@ -538,6 +555,7 @@ export default function AgendaPage() {
 			>
 				<div>
 					<Table
+						ref={tableRef}
 						aria-label="Agenda items"
 						selectionMode="none"
 					>
@@ -566,7 +584,13 @@ export default function AgendaPage() {
 												return (
 													<Cell
 													>
-														{item[column.id]}
+														{column.id === "itemSection" ? (
+															<Link to={`/item/${item.documentId}`}>
+																{item[column.id]}
+															</Link>
+														) : (
+															item[column.id]
+														)}
 													</Cell>
 												)}}
 										</Collection>
