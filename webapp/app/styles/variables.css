@@ -1,0 +1,192 @@
+@layer palette {
+		:root {
+				--palette-color-pure-black: #000000;
+				--palette-color-black: #212529;
+				--palette-color-white: #f8f9fa;
+				--palette-color-pure-white: #ffffff;
+
+				--palette-color-gray-100: var(--palette-color-black);
+				--palette-color-gray-150: #282737;
+				--palette-color-gray-200: #343a40;
+				--palette-color-gray-300: #495057;
+				--palette-color-gray-400: #6c757d;
+				--palette-color-gray-500: #adb5bd;
+				--palette-color-gray-600: #ced4da;
+				--palette-color-gray-700: #dee2e6;
+				--palette-color-gray-800: #e9ecef;
+				--palette-color-gray-850: #f2f3f6;
+				--palette-color-gray-900: var(--palette-color-white);
+
+				--palette-color-blue-100: #03045E;
+				--palette-color-blue-200: #023E8A;
+				--palette-color-blue-300: #0077B6;
+				--palette-color-blue-400: #0096C7;
+				--palette-color-blue-500: #00B4D8;
+				--palette-color-blue-600: #48CAE4;
+				--palette-color-blue-700: #90E0EF;
+				--palette-color-blue-800: #ADE8F4;
+				--palette-color-blue-900: #CAF0F8;
+
+				--palette-color-green-100: #10451D;
+				--palette-color-green-200: #155D27;
+				--palette-color-green-300: #1A7431;
+				--palette-color-green-400: #208B3A;
+				--palette-color-green-500: #25A244;
+				--palette-color-green-600: #2DC653;
+				--palette-color-green-700: #4AD66D;
+				--palette-color-green-800: #6EDE8A;
+				--palette-color-green-900: #92E6A7;
+
+				--palette-color-red-100: #641220;
+				--palette-color-red-200: #6E1423;
+				--palette-color-red-300: #85182A;
+				--palette-color-red-400: #A11D33;
+				--palette-color-red-500: #A71E34;
+				--palette-color-red-600: #B21E35;
+				--palette-color-red-700: #BD1F36;
+				--palette-color-red-800: #C71F37;
+				--palette-color-red-900: #DA1E37;
+
+				--palette-color-yellow-100: #805B10;
+				--palette-color-yellow-200: #926C15;
+				--palette-color-yellow-300: #A47E1B;
+				--palette-color-yellow-400: #B69121;
+				--palette-color-yellow-500: #C9A227;
+				--palette-color-yellow-600: #DBB42C;
+				--palette-color-yellow-700: #EDC531;
+				--palette-color-yellow-800: #FAD643;
+				--palette-color-yellow-900: #FFE169;
+
+				--palette-color-brand-blue-1: #005689;
+				--palette-color-brand-blue-2: #81d3ff;
+				--palette-color-brand-green-1: #03855D;
+				--palette-color-brand-red-1: #a82204;
+		}
+}
+
+@layer utility {
+		:root {
+				--border-radius-button-sm: 6px;
+				--border-radius-input-sm: 4px;
+				--border-radius-overlay-sm: 4px;
+				--border-radius-overlay-md: 6px;
+
+				--border-style-default: solid;
+				
+				--border-width-default: 1px;
+
+				--box-shadow-sm: 2px 2px 2px 3px;
+
+				--font-family-calendar: "B612 Mono";
+				--font-family-default: "Inter";
+
+				--padding-button-sm: 2px;
+				--padding-button-md: 4px;
+				--padding-button-lg: 6px;
+				--padding-button-xl: 8px;
+				--padding-input: 8px;
+				--padding-list: 2px;
+				--padding-list-item: 2px;
+				--padding-overlay-lg: 16px;
+
+				--spacing-button-sm: 4px;
+				--spacing-button-md: 6px;
+				--spacing-button-lg: 8px;
+				--spacing-form-sm: 6px;
+				--spacing-form-md: 8px;
+				--spacing-form-lg: 12px;
+				--spacing-input: 6px;
+				--spacing-list: 2px;
+		}
+
+		* {
+				scrollbar-color: var(--palette-color-gray-300) var(--palette-color-black);
+		}
+}
+
+
+@media (prefers-color-scheme: light) {
+		:root {
+				--background-color-button-default: var(--palette-color-gray-850);
+				--background-color-button-default-active: var(--palette-color-gray-700);
+				--background-color-button-default-hover: var(--palette-color-gray-800);
+				--background-color-header: var(--palette-color-brand-blue-1);
+				--background-color-info-chip: var(--palette-color-brand-blue-2);
+				--background-color-input: var(--palette-color-gray-800);
+				--background-color-input-default: var(--palette-color-pure-white);
+				--background-color-list: var(--palette-color-gray-800);
+				--background-color-listitem-hover: var(--palette-color-brand-blue-2);
+				--background-color-overlay: var(--palette-color-gray-900);
+				--background-color-primary: var(--palette-color-white);
+				--background-color-table-row-even: var(--palette-color-gray-800);
+				--background-color-table-row-hover: var(--palette-color-gray-700);
+				--background-color-table-row-odd: var(--palette-color-gray-850);
+
+				--border-input-default:
+						var(--border-width-default)
+						var(--border-style-default)
+						var(--palette-color-gray-600);
+				--border-overlay:
+						var(--border-width-default)
+						var(--border-style-default)
+						var(--palette-color-gray-600);
+
+				--box-shadow-overlay: var(--box-shadow-sm) var(--palette-color-gray-850);
+
+				--color-button-default: var(--palette-color-gray-200);
+				--color-header-text: var(--palette-color-white);
+				--color-info-chip: var(--palette-color-gray-200);
+				--color-input-placeholder: var(--palette-color-gray-400);
+				--color-text-disabled: var(--palette-color-gray-600);
+				--color-text-info: var(--palette-color-brand-blue-1);
+				--color-text-placeholder: var(--palette-color-gray-600);
+				--color-text-primary: var(--palette-color-black);
+
+				--outline-color-button-default: var(--palette-color-brand-blue-1);
+		}
+
+		* {
+				scrollbar-color: var(--palette-color-gray-600) var(--palette-color-white);
+		}
+}
+
+@media (prefers-color-scheme: dark) {
+		:root {
+				--background-color-button-default: var(--palette-color-gray-200);
+				--background-color-button-default-active: var(--palette-color-gray-400);
+				--background-color-button-default-hover: var(--palette-color-gray-300);
+				--background-color-header: var(--palette-color-brand-blue-1);
+				--background-color-info-chip: var(--palette-color-brand-blue-1);
+				--background-color-input: var(--palette-color-gray-200);
+				--background-color-input-default: var(--palette-color-gray-300);
+				--background-color-list: var(--palette-color-gray-200);
+				--background-color-listitem-hover: var(--palette-color-brand-blue-1);
+				--background-color-overlay: var(--palette-color-gray-300);
+				--background-color-primary: var(--palette-color-black);
+				--background-color-table-row-even: var(--palette-color-gray-300);
+				--background-color-table-row-hover: var(--palette-color-gray-400);
+				--background-color-table-row-odd: var(--palette-color-gray-200);
+
+				--border-input-default:
+						var(--border-width-default)
+						var(--border-style-default)
+						var(--palette-color-gray-300);
+				--border-overlay:
+						var(--border-width-default)
+						var(--border-style-default)
+						var(--palette-color-gray-200);
+
+				--box-shadow-overlay: var(--box-shadow-sm) var(--palette-color-gray-150);
+
+				--color-button-default: var(--palette-color-gray-800);
+				--color-info-chip: var(--palette-color-gray-700);
+				--color-input-placeholder: var(--palette-color-gray-500);
+				--color-listitem-hover: var(--palette-color-black);
+				--color-text-disabled: var(--palette-color-gray-400);
+				--color-text-info: var(--palette-color-brand-blue-2);
+				--color-text-placeholder: var(--palette-color-gray-400);
+				--color-text-primary: var(--palette-color-white);
+
+				--outline-color-button-default: var(--palette-color-brand-blue-1);
+		}
+}
