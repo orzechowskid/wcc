@@ -1,17 +1,32 @@
 services:
   db:
-    build: ./db
     env_file: ./db/.env
     extra_hosts:
       - host.docker.internal:host-gateway
+    healthcheck:
+      interval: 2s
+      retries: 2
+      test: [ "CMD-SHELL", "psql -U $$POSTGRES_USERNAME -d $$POSTGRES_DB -c 'select 1' || exit 1" ]
+    image: postgres:17-alpine
     ports:
       - 5432:5432
     shm_size: 128mb
     user: ${HOST_UID}:${HOST_GID}
     volumes:
       - ./db/data:/var/lib/postgresql/data
-      - ./db/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+
+  dbmigrations:
+    build: ./db
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file: ./db/.env
+    extra_hosts:
+      - host.docker.internal:host-gateway
+    user: ${HOST_UID}:${HOST_GID}
+    volumes:
       - ./db/migrations:/migrations
+
   proxy:
     image: nginx:1.27
     extra_hosts:

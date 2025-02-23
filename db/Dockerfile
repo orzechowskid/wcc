@@ -1,6 +1,9 @@
-FROM postgres:17
+FROM alpine/psql
 
-COPY docker-entrypoint-initdb.d/ /docker-entrypoint-initdb.d/
+RUN apk update && apk add \
+		bash \
+		envsubst
+
 COPY migrations/ /migrations/
 
-ENTRYPOINT /migrations/docker-entrypoint.sh
+ENTRYPOINT [ "/bin/bash", "-c", "/migrations/docker-entrypoint.sh" ]
