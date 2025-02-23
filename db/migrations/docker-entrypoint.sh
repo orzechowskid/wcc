@@ -4,7 +4,7 @@ echo
 echo "beginning migrations"
 echo
 
-psql_cmd="psql -t -v ON_ERROR_STOP=1 $PSQL_CONNECTION_STRING"
+psql_cmd="psql -t -v ON_ERROR_STOP=1 postgres://$POSTGRES_USERNAME:$POSTGRES_PASSWORD@$POSTGRES_HOSTNAME:$POSTGRES_PORT/$POSTGRES_DB"
 dbinit_filename="000_init.sql"
 
 last_migration=`echo "SELECT name FROM migrations ORDER BY name DESC LIMIT 1" | $psql_cmd | tr -d ' '`
