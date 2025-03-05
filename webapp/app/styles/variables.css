@@ -78,7 +78,13 @@
 				--box-shadow-sm: 2px 2px 2px 3px;
 
 				--font-family-calendar: "B612 Mono";
-				--font-family-default: "Inter";
+				--font-family-default: "Lexend";
+				--font-family-headline: "Inter";
+
+				--font-size-page-title: 400%;
+
+				--font-weight-default: 300;
+				--font-weight-page-title: 800;
 
 				--padding-button-sm: 2px;
 				--padding-button-md: 4px;
@@ -97,6 +103,7 @@
 				--spacing-form-lg: 12px;
 				--spacing-input: 6px;
 				--spacing-list: 2px;
+				--spacing-list-horizontal: 16px;
 		}
 
 		* {
@@ -138,6 +145,7 @@
 				--color-info-chip: var(--palette-color-gray-200);
 				--color-input-placeholder: var(--palette-color-gray-400);
 				--color-text-disabled: var(--palette-color-gray-600);
+				--color-text-hero: var(--palette-color-white);
 				--color-text-info: var(--palette-color-brand-blue-1);
 				--color-text-placeholder: var(--palette-color-gray-600);
 				--color-text-primary: var(--palette-color-black);
@@ -183,6 +191,7 @@
 				--color-input-placeholder: var(--palette-color-gray-500);
 				--color-listitem-hover: var(--palette-color-black);
 				--color-text-disabled: var(--palette-color-gray-400);
+				--color-text-hero: var(--palette-color-white);
 				--color-text-info: var(--palette-color-brand-blue-2);
 				--color-text-placeholder: var(--palette-color-gray-400);
 				--color-text-primary: var(--palette-color-white);

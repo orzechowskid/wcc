@@ -12,6 +12,7 @@ html {
 		text-size-adjust: none;
 
 		font-family: var(--font-family-default);
+		font-weight: var(--font-weight-default);
 }
 
 /* Remove default margin in favour of better control in authored CSS */
@@ -99,4 +100,14 @@ html, body, div:has(main) {
 html, body {
 		color: var(--color-text-primary);
 		background-color: var(--background-color-primary);
+}
+
+body {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+}
+body > :not(header):not(footer) {
+		flex-grow: 1;
+		overflow: hidden auto;
 }
