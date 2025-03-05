@@ -1,15 +1,18 @@
-import ChevronDown from "@spectrum-icons/workflow/ChevronDown"
 import {
 	Button,
 	ComboBox as ReactAriaComboBox,
-	ComboBoxProps as ReactAriaComboBoxProps,
+	type ComboBoxProps as ReactAriaComboBoxProps,
 	Label,
 	Input,
 	ListBox,
 	ListBoxItem,
 	Popover,
 } from "react-aria-components"
-import { styled } from "styled-components"
+import {
+	styled
+} from "styled-components"
+
+import Icon from "~/components/library/Icon.tsx"
 
 const StyledReactAriaComboBox = styled(ReactAriaComboBox)`
 		display: flex;
@@ -18,7 +21,7 @@ const StyledReactAriaComboBox = styled(ReactAriaComboBox)`
 
 	> div {
 			border: var(--border-input-default);
-			border-radius: var(--border-radius-input);
+			border-radius: var(--border-radius-input-sm);
 			padding: var(--padding-input);
 			display: flex;
 			gap: 8px;
@@ -34,13 +37,6 @@ const StyledReactAriaComboBox = styled(ReactAriaComboBox)`
 				display: flex;
 				align-items: center;
 				background: transparent;
-
-				svg {
-						width: 16px;
-						aspect-ratio: 1/1;
-						fill: var(--color-text-primary);
-						background: transparent;
-				}
 		}
 
 		> input {
@@ -60,7 +56,7 @@ const StyledReactAriaComboBox = styled(ReactAriaComboBox)`
 
 const StyledListBox = styled(ListBox)`
 		width: var(--trigger-width);
-		box-shadow: 4px 4px 2px 3px #f8f8f8;
+		box-shadow: var(--box-shadow-overlay);
 		padding: 2px;
 		background: white;
 		display: flex;
@@ -72,7 +68,7 @@ const StyledListBox = styled(ListBox)`
 
 				&[data-hovered="true"],
 				&[data-selected="true"] {
-						background-color: #81d3ff;
+						background-color: var(--palette-color-brand-blue-2);
 				}
 		}
 `
@@ -122,7 +118,7 @@ interface MyComboBoxProps<T extends object>
 		children: React.ReactNode | ((item: T) => React.ReactNode)
 	}
 
-function MyComboBox<T extends object>(
+function ComboBox<T extends object>(
   { label, description, errorMessage, children, ...props }: MyComboBoxProps<T>
 ) {
   return (
@@ -131,7 +127,7 @@ function MyComboBox<T extends object>(
       <div className="my-combobox-container">
         <Input />
         <Button>
-					<ChevronDown />
+					<Icon name="chevron-selector-vertical" />
 				</Button>
       </div>
       {description && <Text slot="description">{description}</Text>}
@@ -154,4 +150,4 @@ function Item(props: ListBoxItemProps) {
 }
 
 export { Item }
-export default MyComboBox
+export default ComboBox

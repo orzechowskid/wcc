@@ -1,4 +1,3 @@
-import ChevronDown from "@spectrum-icons/workflow/ChevronDown"
 import {
 	Button,
 	Label,
@@ -13,6 +12,8 @@ import {
 import {
 	styled
 } from "styled-components"
+
+import Icon from "~/components/library/Icon.tsx"
 
 type SelectProps = ReactAriaSelectProps & {
 	items: Partial<ListBoxItemProps>[];
@@ -75,7 +76,7 @@ export default function Select(props: SelectProps) {
 			</StyledLabel>
 			<TriggerButton>
 				<SelectValue />
-				<ChevronDown />
+				<Icon name="chevron-down" />
 			</TriggerButton>
 			<StyledPopover>
 				<ListBox items={items}>
