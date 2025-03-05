@@ -1,3 +1,7 @@
+import type {
+    PropsWithChildren,
+	ReactElement
+} from "react"
 import {
 	Button as ReactAriaButton,
 	type ButtonProps as ReactAriaButtonProps
@@ -5,6 +9,11 @@ import {
 import {
 	styled
 } from "styled-components"
+
+type ButtonProps = ReactAriaButtonProps & PropsWithChildren<{
+	postIcon?: ReactElement;
+	preIcon?: ReactElement
+}>
 
 const StyledReactAriaButton = styled(ReactAriaButton)`
 		border: var(--border-input-default);
@@ -32,9 +41,19 @@ const StyledReactAriaButton = styled(ReactAriaButton)`
 		}
 `
 
-function Button(props: ReactAriaButtonProps) {
+function Button(props: ButtonProps) {
+	const {
+		children,
+		postIcon,
+		preIcon,
+		...rest
+	} = props
 	return (
-		<StyledReactAriaButton {...props} />
+		<StyledReactAriaButton {...rest}>
+			{preIcon ?? null}
+			{children}
+			{postIcon ?? null}
+		</StyledReactAriaButton>
 	)
 }
 
