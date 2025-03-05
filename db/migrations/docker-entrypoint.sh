@@ -8,10 +8,11 @@ psql_cmd="psql -t -v ON_ERROR_STOP=1 postgres://$POSTGRES_USERNAME:$POSTGRES_PAS
 dbinit_filename="000_init.sql"
 
 last_migration=`echo "SELECT name FROM migrations ORDER BY name DESC LIMIT 1" | $psql_cmd | tr -d ' '`
-migration_filenames=$(ls /migrations/sql | sort)
+migration_filenames=$(ls /migrations/sql | grep -vi test.sql | sort)
 
 if [[ -z "$last_migration" ]]; then
-		echo "no migration history found"
+		echo "no migration history found; creating database"
+		echo "CREATE DATABASE $POSTGRES_DB ; " | psql -t -v ON_ERROR_STOP=1 postgres://$POSTGRES_USERNAME:$POSTGRES_PASSWORD@$POSTGRES_HOSTNAME:$POSTGRES_PORT
 else
 		echo "last migration applied: $last_migration"
 fi
