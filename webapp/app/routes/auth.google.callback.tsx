@@ -11,10 +11,13 @@ import {
 import type {
 	Route
 } from "./+types/auth.google.callback"
+import { getUser } from "~/utils/db/users.server"
 
 export let loader = async ({ request }: Route.LoaderArgs) => {
   const user = await authenticator.authenticate("google", request)
   const headers = await saveSession(request, user)
+
+	console.log({user,headers})
 
   return redirect("/dashboard", { headers })
 }

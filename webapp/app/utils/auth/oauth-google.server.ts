@@ -8,6 +8,9 @@ import {
 import {
 	type SessionUser
 } from "./auth.server.ts"
+import {
+	getUser
+} from "../db/users.server.ts"
 
 const googleStrategy = new GoogleStrategy(
   {
@@ -21,11 +24,27 @@ const googleStrategy = new GoogleStrategy(
     const profile = await GoogleStrategy.userProfile(tokens)
 
 		console.log({profile})
+		const userRecord = await getUser({
+			email_address: profile._json.email
+		})
+
+		if (!userRecord) {
+			/* first time signing in */
+			await createUser({
+				email_address: "",
+				first_name: "",
+				last_name: ""
+			})
+		}
+
 		return {
 			id: "deadbeef",
 			email: "",
 			displayName: "",
 			pictureUrl: ""
+		}
+		return {
+			
 		}
   },
 )
