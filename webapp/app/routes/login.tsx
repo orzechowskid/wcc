@@ -1,6 +1,7 @@
 import {
     redirect,
-    useFetcher
+    useFetcher,
+    type LoaderFunctionArgs
 } from "react-router"
 
 import {
@@ -14,8 +15,21 @@ import {
 	styled
 } from "styled-components"
 import Button from "~/components/library/Button"
+import { getSessionUser } from "~/utils/auth/auth.server"
 
-export async function clientAction() {
+export async function loader({ request }: LoaderFunctionArgs) {
+	console.log(request)
+	const currentUser = await getSessionUser(request)
+
+	if (currentUser) {
+		/* already logged in */
+		return redirect("/")
+	}
+}
+
+export async function action() {
+	// TODO
+	return redirect("/login")
 }
 
 const LoginPage = styled.main`
@@ -24,6 +38,10 @@ const LoginPage = styled.main`
 		justify-content: center;
 		align-items: center;
 
+		& h1 {
+				line-height: 2;
+		}
+
 		& form {
 				display: flex;
 				flex-direction: column;
@@ -31,9 +49,13 @@ const LoginPage = styled.main`
 		}
 `
 
-export default function Login({
-	loaderData
-}: Route.ComponentProps) {
+const GoogleButton = styled(Button)`
+		font-family: "Roboto";
+		font-size: 14px;
+		line-height: 20px;
+`
+
+export default function Login() {
 	const fetcher = useFetcher()
 
 	return (
@@ -43,9 +65,12 @@ export default function Login({
 				action="/auth/google"
 				method="GET"
 			>
-				<Button type="submit">
-					Log in with Google
-				</Button>
+				<GoogleButton
+					preIcon={<img src="/assets/google.svg" />}
+					type="submit"
+				>
+					Sign in with Google
+				</GoogleButton>
 			</form>
 			<div>or</div>
 			<form
