@@ -81,10 +81,36 @@
 				--font-family-default: "Lexend";
 				--font-family-headline: "Inter";
 
-				--font-size-page-title: 400%;
+				--font-size--2: clamp(0.6331rem, 0.7067rem + -0.0613vw, 0.6944rem);
+				--font-size--1: clamp(0.8333rem, 0.8312rem + 0.0106vw, 0.844rem);
+				--font-size-0: clamp(1rem, 0.975rem + 0.125vw, 1.125rem);
+				--font-size-1: clamp(1.2rem, 1.1401rem + 0.2996vw, 1.4996rem);
+				--font-size-2: clamp(1.44rem, 1.3282rem + 0.559vw, 1.999rem);
+				--font-size-3: clamp(1.728rem, 1.5407rem + 0.9367vw, 2.6647rem);
+				--font-size-4: clamp(2.0736rem, 1.7779rem + 1.4784vw, 3.552rem);
+				--font-size-5: clamp(2.4883rem, 2.039rem + 2.2465vw, 4.7348rem);
+				
+				--font-size-header-default1: var(--font-size-5);
+				--font-size-header-default2: var(--font-size-4);
+				--font-size-header-default3: var(--font-size-3);
+				--font-size-header-default4: var(--font-size-2);
+				--font-size-header-default5: var(--font-size-1);
+				--font-size-header-default6: var(--font-size-0);
+				--font-size-input-text: var(--font-size-2);
+				--font-size-page-title: var(--font-size-5);
 
 				--font-weight-default: 300;
 				--font-weight-page-title: 800;
+
+				--space-3xs: clamp(0.25rem, 0.2375rem + 0.0625vw, 0.3125rem);
+				--space-2xs: clamp(0.5rem, 0.4875rem + 0.0625vw, 0.5625rem);
+				--space-xs: clamp(0.75rem, 0.725rem + 0.125vw, 0.875rem);
+				--space-s: clamp(1rem, 0.975rem + 0.125vw, 1.125rem);
+				--space-m: clamp(1.5rem, 1.4625rem + 0.1875vw, 1.6875rem);
+				--space-l: clamp(2rem, 1.95rem + 0.25vw, 2.25rem);
+				--space-xl: clamp(3rem, 2.925rem + 0.375vw, 3.375rem);
+				--space-2xl: clamp(4rem, 3.9rem + 0.5vw, 4.5rem);
+				--space-3xl: clamp(6rem, 5.85rem + 0.75vw, 6.75rem);
 
 				--padding-button-sm: 2px;
 				--padding-button-md: 4px;
@@ -94,6 +120,7 @@
 				--padding-list: 2px;
 				--padding-list-item: 2px;
 				--padding-overlay-lg: 16px;
+				--padding-page-sm: 16px;
 
 				--spacing-button-sm: 4px;
 				--spacing-button-md: 6px;

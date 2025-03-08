@@ -27,25 +27,22 @@ const StyledReactAriaComboBox = styled(ReactAriaComboBox)`
 			gap: 8px;
 			background-color: var(--background-color-input);
 
-			> input {
-					flex-grow: 1;
+			> button {
+					border: 0;
+					padding: 0 8px;
+					display: flex;
+					align-items: center;
+					background: transparent;
 			}
 
-		> button {
-				border: 0;
-				padding: 0 8px;
-				display: flex;
-				align-items: center;
-				background: transparent;
-		}
-
-		> input {
-				border: 0;
-				padding: var(--padding-input);
-				line-height: 1.5;
-				color: var(--color-text-primary);
-				background-color: var(--background-color-input-default);
-		}
+			> input {
+					width: 100%;
+					border: 0;
+					padding: var(--padding-input);
+					line-height: 1.5;
+					color: var(--color-text-primary);
+					background-color: var(--background-color-input-default);
+			}
 	}
 
 	> label {

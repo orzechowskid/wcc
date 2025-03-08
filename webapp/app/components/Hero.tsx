@@ -56,7 +56,7 @@ type HeroProps = HTMLAttributes<HTMLDivElement> & {
 	title: string
 }
 
-const StyledHero = styled.div<HeroProps>`
+const StyledHero = styled.div`
 		width: 100%;
 		height: 400px;
 		display: flex;

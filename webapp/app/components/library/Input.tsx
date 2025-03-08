@@ -19,6 +19,7 @@ const StyledTextField = styled(TextField)`
 				border-radius: var(--border-radius-input-sm);
 				padding: var(--padding-input);
 				background-color: var(--background-color-input-default);
+				font-size: var(--font-size-input-text);
 				letter-spacing: 1px;
 
 				&::placeholder {
