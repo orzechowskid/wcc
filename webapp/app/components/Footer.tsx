@@ -56,7 +56,7 @@ function Footer() {
 	return (
 		<footer>
 			{Object.entries(credits).map(([k,v]) => (
-				<Credit>
+				<Credit key={k}>
 					<span>{k}:</span>
 					<a href={v.creatorLink}>{v.creator}</a>
 					<span>({v.license})</span>
