@@ -16,6 +16,7 @@ import {
 } from "styled-components"
 import Button from "~/components/library/Button"
 import { getSessionUser } from "~/utils/auth/auth.server"
+import { Heading } from "~/components/Section"
 
 export async function loader({ request }: LoaderFunctionArgs) {
 	console.log(request)
@@ -39,7 +40,6 @@ const LoginPage = styled.main`
 		align-items: center;
 
 		& h1 {
-				line-height: 2;
 		}
 
 		& form {
@@ -47,6 +47,10 @@ const LoginPage = styled.main`
 				flex-direction: column;
 				gap: var(--spacing-form-lg);
 		}
+`
+
+const StyledHeading = styled(Heading)`
+		line-height: 2;
 `
 
 const GoogleButton = styled(Button)`
@@ -60,7 +64,7 @@ export default function Login() {
 
 	return (
 		<LoginPage>
-			<h1>Log In</h1>
+			<StyledHeading>Welcome</StyledHeading>
 			<form
 				action="/auth/google"
 				method="GET"
@@ -88,6 +92,9 @@ export default function Login() {
 					placeholder=""
 					type="password"
 				/>
+				<Button type="submit">
+					Log in
+				</Button>
 			</form>
 		</LoginPage>
 	)

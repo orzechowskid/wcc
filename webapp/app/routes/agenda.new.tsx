@@ -10,8 +10,25 @@ import {
 
 import Hero from "~/components/Hero.tsx"
 import Button from "~/components/library/Button.tsx"
+import DatePicker from "~/components/library/DatePicker.tsx"
 
 const PageContainer = styled.div`
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 48px;
+
+		form {
+				width: 35%;
+
+				[data-auto-document-heading] {
+						margin-bottom: 16px;
+				}
+		}
+`
+
+const StyledDatePicker = styled(DatePicker)`
+		width: 240px;
 `
 
 export default function NewAgenda() {
@@ -27,7 +44,7 @@ export default function NewAgenda() {
 				id="new-agenda"
 				method="POST"
 			>
-				<DatePicker
+				<StyledDatePicker
 					granularity="day"
 					label="Meeting Date"
 					name="agendaDate"

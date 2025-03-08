@@ -42,7 +42,8 @@ const PageContainer = styled.div`
 		gap: 48px;
 
 		section {
-				width: 35%;
+				width: 100%;
+				padding: 0 var(--padding-page-sm);
 
 				[data-auto-document-heading] {
 						margin-bottom: 16px;
@@ -75,7 +76,7 @@ export default function Index(props: Route.LoaderArgs) {
 				title="Worcester City Council Explorer"
 			/>
 			<Section>
-				<Heading>Search by agenda date</Heading>
+				<Heading>Search agenda date</Heading>
 				<ComboBox
 					items={formattedFilteredData}
 					label="Agenda"
@@ -94,7 +95,7 @@ export default function Index(props: Route.LoaderArgs) {
 				<span>Can't find the agenda you're looking for?  <A href="/agenda/new">Request it here</A>.</span>
 			</Section>
 			<Section>
-				<Heading>Search by agenda item ID</Heading>
+				<Heading>Search agenda item</Heading>
 				<div>coming soon!</div>
 			</Section>
 		</PageContainer>
