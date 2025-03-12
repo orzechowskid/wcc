@@ -18,7 +18,7 @@ type ButtonProps = ReactAriaButtonProps & PropsWithChildren<{
 const StyledReactAriaButton = styled(ReactAriaButton)`
 		border: var(--border-input-default);
 		border-radius: var(--border-radius-button-sm);
-		padding: var(--padding-button-xl);
+		padding: var(--padding-button);
 		display: flex;
 		justify-content: center;
 		align-items: center;

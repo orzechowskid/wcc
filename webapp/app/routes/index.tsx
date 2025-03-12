@@ -7,7 +7,7 @@ import {
 	useState
 } from "react"
 import {
-    Link,
+  Link,
 	useLoaderData
 } from "react-router"
 import {
@@ -29,26 +29,28 @@ import ComboBox, {
 import {
 	getAllAgendas
 } from "~/utils/db/agendas.server.ts"
-import Hero from "~/components/Hero"
+import Hero from "~/components/Hero.tsx"
+import {
+	center,
+	leftAlign,
+	rightAlign,
+	hero
+} from "~/components/layouts.tsx"
 
 export async function loader() {
 	return getAllAgendas()
 }
 
-const PageContainer = styled.div`
+const PageContainer = styled.main`
+		& h2 {
+				font-size: var(--font-size-3);
+		}
+`
+
+const SearchSection = styled(Section)`
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		gap: 48px;
-
-		section {
-				width: 100%;
-				padding: 0 var(--padding-page-sm);
-
-				[data-auto-document-heading] {
-						margin-bottom: 16px;
-				}
-		}
 `
 
 export default function Index(props: Route.LoaderArgs) {
@@ -75,7 +77,7 @@ export default function Index(props: Route.LoaderArgs) {
 				image="cityhall"
 				title="Worcester City Council Explorer"
 			/>
-			<Section>
+			<SearchSection>
 				<Heading>Search agenda date</Heading>
 				<ComboBox
 					items={formattedFilteredData}
@@ -93,11 +95,11 @@ export default function Index(props: Route.LoaderArgs) {
 					)}
 				</ComboBox>
 				<span>Can't find the agenda you're looking for?  <A href="/agenda/new">Request it here</A>.</span>
-			</Section>
-			<Section>
-				<Heading>Search agenda item</Heading>
+			</SearchSection>
+			<SearchSection>
+				<Heading>Search councilor</Heading>
 				<div>coming soon!</div>
-			</Section>
+			</SearchSection>
 		</PageContainer>
 	)
 }

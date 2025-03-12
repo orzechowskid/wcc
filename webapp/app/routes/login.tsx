@@ -14,9 +14,11 @@ import {
 import {
 	styled
 } from "styled-components"
-import Button from "~/components/library/Button"
+
 import { getSessionUser } from "~/utils/auth/auth.server"
-import { Heading } from "~/components/Section"
+
+import Button from "~/components/library/Button.tsx"
+import { Heading } from "~/components/Section.tsx"
 
 export async function loader({ request }: LoaderFunctionArgs) {
 	console.log(request)
@@ -30,19 +32,14 @@ export async function loader({ request }: LoaderFunctionArgs) {
 
 export async function action() {
 	// TODO
-	return redirect("/login")
+	return redirect("/")
 }
 
 const LoginPage = styled.main`
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-
-		& h1 {
+		h1 {
 		}
 
-		& form {
+		form {
 				display: flex;
 				flex-direction: column;
 				gap: var(--spacing-form-lg);
@@ -50,10 +47,11 @@ const LoginPage = styled.main`
 `
 
 const StyledHeading = styled(Heading)`
-		line-height: 2;
+
 `
 
 const GoogleButton = styled(Button)`
+		/* follows Google's design guidelines, not our own */
 		font-family: "Roboto";
 		font-size: 14px;
 		line-height: 20px;

@@ -25,10 +25,30 @@ type DatePickerProps = ReactAriaDatePickerProps<DateValue> & {
 }
 
 const StyledPopover = styled(Popover)`
-		width: 240px;
+		width: clamp(320px, var(--trigger-width), 99vw);
+		border: var(--border-overlay);
+		padding: var(--padding-date-picker-overlay);
+		background: var(--background-color-date-picker-overlay);
+
+		header {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+
+				h2 {
+						font-size: var(--font-size-0);
+				}
+
+				button {
+						border: 0;
+						padding: var(--padding-date-picker-heading-button);
+						background: transparent;
+				}
+		}
 
 		& table {
 				width: 100%;
+				font-size: var(--font-size--1);
 		}
 
 		& tbody tr {
@@ -36,7 +56,6 @@ const StyledPopover = styled(Popover)`
 		}
 
 		[role="gridcell"] {
-				color: black;
 				text-align: center;
 		}
 `
@@ -49,6 +68,10 @@ const StyledGroup = styled(Group)`
 		justify-content: space-between;
 		gap: var(--spacing-button-lg);
 		background-color: var(--background-color-button-default);
+
+		&[data-focus-within="true"][data-invalid="true"] {
+				border-color: var(--color-input-error);
+		}
 
 		button {
 				border: 0;
@@ -81,7 +104,14 @@ const DatePicker = (props: DatePickerProps) => {
 
 	return (
 		<StyledReactAriaDatePicker {...rest}>
-			<Label>{label}</Label>
+			<Label>
+				{label}
+				{props.isRequired ? (
+					<span>*</span>
+				) : (
+					null
+				)}
+			</Label>
 			<StyledGroup>
 				<StyledDateInput>
 					{(segment) => <DateSegment segment={segment} />}

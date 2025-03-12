@@ -16,7 +16,12 @@ type DocumentLevelContextShape = {
 	documentLevel: number
 }
 
-type SectionProps = HTMLAttributes<HTMLElement>
+type SectionProps = HTMLAttributes<HTMLElement> & ({
+	"data-columns"?: number
+} | {
+	"data-centered": true;
+	"data-columns": number
+})
 
 export type HeadingProps = HTMLAttributes<HTMLHeadingElement> & {
 	as?: NumberedHeadingTag | "div"
@@ -71,15 +76,11 @@ const Heading = (props: HeadingProps) => {
 		documentLevel
 	} = useDocumentLevel()
 	const Tag = as ?? getAutoHeadingTag(documentLevel)
-	/* no other styling information here please; this is a component for semantic
-	 * purposes, not visual ones */
-	const style = { fontFamily: "var(--font-family-headline)" }
 
 	return (
 		<Tag
 			data-auto-document-heading="true"
 			{...rest}
-			style={style}
 		/>
 	)
 }
