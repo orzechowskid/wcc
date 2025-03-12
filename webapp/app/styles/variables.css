@@ -81,26 +81,36 @@
 				--font-family-default: "Lexend";
 				--font-family-headline: "Inter";
 
-				--font-size--2: clamp(0.6331rem, 0.7067rem + -0.0613vw, 0.6944rem);
-				--font-size--1: clamp(0.8333rem, 0.8312rem + 0.0106vw, 0.844rem);
-				--font-size-0: clamp(1rem, 0.975rem + 0.125vw, 1.125rem);
-				--font-size-1: clamp(1.2rem, 1.1401rem + 0.2996vw, 1.4996rem);
-				--font-size-2: clamp(1.44rem, 1.3282rem + 0.559vw, 1.999rem);
-				--font-size-3: clamp(1.728rem, 1.5407rem + 0.9367vw, 2.6647rem);
-				--font-size-4: clamp(2.0736rem, 1.7779rem + 1.4784vw, 3.552rem);
-				--font-size-5: clamp(2.4883rem, 2.039rem + 2.2465vw, 4.7348rem);
-				
-				--font-size-header-default1: var(--font-size-5);
-				--font-size-header-default2: var(--font-size-4);
-				--font-size-header-default3: var(--font-size-3);
-				--font-size-header-default4: var(--font-size-2);
-				--font-size-header-default5: var(--font-size-1);
-				--font-size-header-default6: var(--font-size-0);
-				--font-size-input-text: var(--font-size-2);
+				--font-size--2: clamp(0.72rem, 0.6617rem + 0.2485vw, 0.96rem);
+				--font-size--1: clamp(0.9rem, 0.8272rem + 0.3107vw, 1.2rem);
+				--font-size-0: clamp(1.125rem, 1.034rem + 0.3883vw, 1.5rem);
+				--font-size-1: clamp(1.4063rem, 1.2925rem + 0.4854vw, 1.875rem);
+				--font-size-2: clamp(1.7578rem, 1.6156rem + 0.6068vw, 2.3438rem);
+				--font-size-3: clamp(2.1973rem, 2.0195rem + 0.7585vw, 2.9297rem);
+				--font-size-4: clamp(2.7466rem, 2.5244rem + 0.9481vw, 3.6621rem);
+				--font-size-5: clamp(3.4332rem, 3.1555rem + 1.1851vw, 4.5776rem);
+				--font-size-6: clamp(4.2915rem, 3.9443rem + 1.4814vw, 5.722rem);
+
+				--font-size-date-picker-calendar: var(--font-size--1);
+				--font-size-default: var(--font-size-0);
+				--font-size-header-default1: var(--font-size-6);
+				--font-size-header-default2: var(--font-size-5);
+				--font-size-header-default3: var(--font-size-4);
+				--font-size-header-default4: var(--font-size-3);
+				--font-size-header-default5: var(--font-size-2);
+				--font-size-header-default6: var(--font-size-1);
+				--font-size-input-text: var(--font-size-1);
 				--font-size-page-title: var(--font-size-5);
 
 				--font-weight-default: 300;
 				--font-weight-page-title: 800;
+
+				--grid-max-width: 112.50rem;
+				--grid-gutter: var(--space-s-2xl, clamp(1rem, 0.2201rem + 3.8043vw, 4.5rem));
+				--grid-columns: 12;
+				--grid-start: 2;
+				--grid-middle: calc((var(--grid-columns) / 2) + 1);
+				--grid-end: -2;
 
 				--space-3xs: clamp(0.25rem, 0.2375rem + 0.0625vw, 0.3125rem);
 				--space-2xs: clamp(0.5rem, 0.4875rem + 0.0625vw, 0.5625rem);
@@ -111,11 +121,15 @@
 				--space-xl: clamp(3rem, 2.925rem + 0.375vw, 3.375rem);
 				--space-2xl: clamp(4rem, 3.9rem + 0.5vw, 4.5rem);
 				--space-3xl: clamp(6rem, 5.85rem + 0.75vw, 6.75rem);
+				/* custom pairings for a different scale between little and big */
+				--space-s-2xl: clamp(1rem, 0.3rem + 3.5vw, 4.5rem);
 
-				--padding-button-sm: 2px;
+				--padding-button: var(--space-xs);
 				--padding-button-md: 4px;
 				--padding-button-lg: 6px;
 				--padding-button-xl: 8px;
+				--padding-date-picker-heading-button: var(--space-s);
+				--padding-date-picker-overlay: var(--space-xs);
 				--padding-input: 8px;
 				--padding-list: 2px;
 				--padding-list-item: 2px;
@@ -144,6 +158,7 @@
 				--background-color-button-default: var(--palette-color-gray-850);
 				--background-color-button-default-active: var(--palette-color-gray-700);
 				--background-color-button-default-hover: var(--palette-color-gray-800);
+				--background-color-date-picker-overlay: var(--palette-color-white);
 				--background-color-header: var(--palette-color-brand-blue-1);
 				--background-color-info-chip: var(--palette-color-brand-blue-2);
 				--background-color-input: var(--palette-color-gray-800);
@@ -170,6 +185,7 @@
 				--color-button-default: var(--palette-color-gray-200);
 				--color-header-text: var(--palette-color-white);
 				--color-info-chip: var(--palette-color-gray-200);
+				--color-input-error: var(--palette-color-red-800);
 				--color-input-placeholder: var(--palette-color-gray-400);
 				--color-text-disabled: var(--palette-color-gray-600);
 				--color-text-hero: var(--palette-color-white);
@@ -190,6 +206,7 @@
 				--background-color-button-default: var(--palette-color-gray-200);
 				--background-color-button-default-active: var(--palette-color-gray-400);
 				--background-color-button-default-hover: var(--palette-color-gray-300);
+				--background-color-date-picker-overlay: var(--palette-color-black);
 				--background-color-header: var(--palette-color-brand-blue-1);
 				--background-color-info-chip: var(--palette-color-brand-blue-1);
 				--background-color-input: var(--palette-color-gray-200);
@@ -215,6 +232,7 @@
 
 				--color-button-default: var(--palette-color-gray-800);
 				--color-info-chip: var(--palette-color-gray-700);
+				--color-input-error: var(--palette-color-red-800);
 				--color-input-placeholder: var(--palette-color-gray-500);
 				--color-listitem-hover: var(--palette-color-black);
 				--color-text-disabled: var(--palette-color-gray-400);
